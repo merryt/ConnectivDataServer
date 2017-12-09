@@ -39,30 +39,32 @@ class NetworkDataViewSet(viewsets.ModelViewSet):
     """
     API endpoint to view all nodes that have submitted network date
     """
-    queryset = NetworkData.objects.all()
+    queryset = NetworkData.objects.all().order_by('timestamp')
     serializer_class = NetworkDataSerializer
-    
 
-    def get_networknode(self, request, networknode_pk=None):
-        networknode = get_object_or_404(NetworkNode.objects.all(), pk=networknode_pk)    
-        print("asd")
-        return networknode
+    # def get_networknode(self, request, networknode_pk=None):
+    #     networknode = get_object_or_404(NetworkNode.objects.all(), pk=networknode_pk)    
+    #     print("asd")
+    #     return networknode
 
-    def create(self, request, *arg, **kwargs):
-        self.get_networknode(request, networknode_pk=kwargs['node_name'])
-        return super().create(request, *args, **kwargs)
+    # def create(self, request, *args, **kwargs):
+    #     self.get_networknode(request, networknode_pk=kwargs['networknode_pk'])
+    #     return super().create(request, *args, **kwargs)
 
-    def perform_create(self, serializer):
-        serializer.save(
-            network_node_pk = self.kwargs['networknode_pk']
-        )
+    # def perform_create(self, serializer):
+    #     serializer.save(
+    #         network_node_pk = self.kwargs['networknode_pk']
+    #     )
     # def get_queryset(self):
-    #     print(self)
     #     return NetworkData.objects.filter(networknode = self.kwargs['networknode_pk'])
 
-    def list(self, request, *arg, **kwargs):
-        self.get_networknode(request, networknode_pk=kwargs['networknode_pk'])
+    # def list(self, request, *args, **kwargs):
+    #     print("----------------------------------------")
+    #     print(args)
+    #     print("----------------------------------------")
+        
+    #     self.get_networknode(request, networknode_pk=kwargs['networknode_pk'])
 
-        return super().list(request, *args, **kwargs)
+    #     return super().list(request, *args, **kwargs)
 
     
