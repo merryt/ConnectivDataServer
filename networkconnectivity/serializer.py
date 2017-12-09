@@ -22,7 +22,3 @@ class NetworkDataSerializer(serializers.HyperlinkedModelSerializer):
         model = NetworkData
         fields = ('node_name', 'ip_address', 'external_ip', 'external_ip', 'timestamp', 'ping', 'ping_destination')
 
-
-class NetworkDataPOSTSerializer(NetworkData):
-    model = NetworkData
-    fields = ('node_name', 'ip_address', 'external_ip', 'external_ip', 'timestamp', 'ping', 'ping_destination')

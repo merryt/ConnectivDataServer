@@ -17,5 +17,7 @@ class NetworkData(models.Model):
     timestamp = models.DateTimeField("transmission started")
     ping = models.CharField(max_length=10)
     ping_destination = models.CharField(max_length=200)
+    def __str__(self):
+        return self.timestamp
     
     
